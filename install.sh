@@ -79,7 +79,7 @@ else
 sts="${Error}"
 fi
 
-REPO="https://raw.githubusercontent.com/nabati123/new/main/"
+REPO="https://raw.githubusercontent.com/KhaiVpn767/V6/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"
@@ -301,7 +301,7 @@ sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/xray.conf
 rm -rf /etc/systemd/system/xray.service.d
 cat >/etc/systemd/system/xray.service <<EOF
 Description=Xray Service
-Documentation=https://t.me/xdxl_real
+Documentation=https://t.me/khaivpn
 After=network.target nss-lookup.target
 
 [Service]
@@ -464,9 +464,9 @@ EOF
 mkdir -p /usr/local/xdxl/
 wget -q -O /usr/local/xdxl/badvpn "${REPO}source/badvpn"
 chmod +x /usr/local/xdxl/badvpn
-wget -q -O /etc/systemd/system/udp-mini-1.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-1.service"
-wget -q -O /etc/systemd/system/udp-mini-2.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-2.service"
-wget -q -O /etc/systemd/system/udp-mini-3.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-3.service"
+wget -q -O /etc/systemd/system/udp-mini-1.service "${REPO}udp-mini-1.service"
+wget -q -O /etc/systemd/system/udp-mini-2.service "${REPO}udp-mini-2.service"
+wget -q -O /etc/systemd/system/udp-mini-3.service "${REPO}udp-mini-3.service"
 print_success "Limit Quota Service"
 }
 
@@ -482,7 +482,7 @@ print_success "SlowDNS"
 function ins_SSHD(){
 clear
 print_install "Memasang SSHD"
-wget -q -O /etc/ssh/sshd_config "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/sshd"
+wget -q -O /etc/ssh/sshd_config "${REPO}source/sshd"
 chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 systemctl restart ssh
@@ -650,7 +650,7 @@ mv menu/* /usr/local/sbin/
 cd
 rm -rf /cache
 
-wget -qO- https://raw.githubusercontent.com/ZmFkbHkK/xd/main/version > /root/.versi
+wget -qO- https://raw.githubusercontent.com/KhaiVpn767/V6/main/version > /root/.versi
 
 }
 

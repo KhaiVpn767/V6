@@ -79,7 +79,7 @@ else
 sts="${Error}"
 fi
 
-REPO="https://raw.githubusercontent.com/KhaiVpn767/V6/main/"
+REPO="https://raw.githubusercontent.com/nabati123/new/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"
@@ -492,37 +492,13 @@ print_success "SSHD"
 
 function ins_dropbear(){
 clear
-print_install "Menginstall Dropbear"
-apt-get install dropbear -y
-sudo dropbearkey -t dss -f /etc/dropbear/dropbear_dss_host_key
-sudo chmod 600 /etc/dropbear/dropbear_dss_host_key
-wget -q -O /usr/sbin/dropbear "${REPO}source/ftvpn"
-chmod 700 /usr/sbin/dropbear
-cat<<EOF>>/etc/default/dropbear
-# The TCP port that Dropbear listens on
-DROPBEAR_PORT=109
-
-# Receive window size - this is a tradeoff between memory and network performance
-DROPBEAR_RECEIVE_WINDOW=65536
-
-# Any additional arguments for Dropbear.  For instead set
-#
-DROPBEAR_EXTRA_ARGS="-b /etc/issue.net -p 143 -I 60"
-#
-# to specify an optional banner file containing a message to be sent to
-DROPBEAR_BANNER="/etc/issue.net"
-# clients before they connect; or
-#
-#   DROPBEAR_EXTRA_ARGS="-p 109""-r /etc/dropbear/rsa_host_key -r /etc/dropbear/ed25519_host_key"
-#
-# to specify custom host keys.  See dropbear(8) for possible values.
-#DROPBEAR_EXTRA_ARGS="-p 50000 -p 109 -p 110 -p 69"""
-
-EOF
-echo "/bin/false" >> /etc/shells
-echo "/usr/sbin/nologin" >> /etc/shells
-/etc/init.d/ssh restart
+print_install "Install Dropbear, Press any button if too long"
+# // Installing Dropbear
+apt-get install dropbear -y > /dev/null 2>&1
+wget -q -O /etc/default/dropbear "https://raw.githubusercontent.com/KhaiVpn767/V6/main/config/dropbear.conf"
+chmod +x /etc/default/dropbear
 /etc/init.d/dropbear restart
+/etc/init.d/dropbear status
 print_success "Dropbear"
 }
 
@@ -623,16 +599,21 @@ wget -q -O /etc/issue.net "${REPO}source/issue.net"
 
 function ins_epro(){
 clear
-print_install "Menginstall ePro WebSocket Proxy"
-wget -q -O /usr/bin/ws "${REPO}source/ws"
-wget -q -O /usr/bin/tun.conf "${REPO}source/tun.conf"
-wget -q -O /etc/systemd/system/ws.service "${REPO}source/ws.service"
-chmod +x /etc/systemd/system/ws.service
-chmod +x /usr/bin/ws
-chmod 644 /usr/bin/tun.conf
+print_install "Install ePro WebSocket Proxy"
+    wget -O /usr/bin/ws "https://raw.githubusercontent.com/KhaiVpn767/V6/main/files/ws" >/dev/null 2>&1
+    wget -O /usr/bin/tun.conf "https://raw.githubusercontent.com/KhaiVpn767/V6/main/config/tun.conf" >/dev/null 2>&1
+    wget -O /etc/systemd/system/ws.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/files/ws.service" >/dev/null 2>&1
+    chmod +x /etc/systemd/system/ws.service
+    chmod +x /usr/bin/ws
+    chmod 644 /usr/bin/tun.conf
+systemctl disable ws
+systemctl stop ws
+systemctl enable ws
+systemctl start ws
+systemctl restart ws
 wget -q -O /usr/local/share/xray/geosite.dat "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat" >/dev/null 2>&1
 wget -q -O /usr/local/share/xray/geoip.dat "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat" >/dev/null 2>&1
-wget -O /usr/sbin/ftvpn "${REPO}source/ftvpn" >/dev/null 2>&1
+wget -O /usr/sbin/ftvpn "https://raw.githubusercontent.com/KhaiVpn767/V6/main/files/ftvpn" >/dev/null 2>&1
 chmod +x /usr/sbin/ftvpn
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
@@ -669,7 +650,7 @@ mv menu/* /usr/local/sbin/
 cd
 rm -rf /cache
 
-wget -qO- https://raw.githubusercontent.com/KhaiVpn767/V6/main/version > /root/.versi
+wget -qO- https://raw.githubusercontent.com/ZmFkbHkK/xd/main/version > /root/.versi
 
 }
 

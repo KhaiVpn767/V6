@@ -464,9 +464,9 @@ EOF
 mkdir -p /usr/local/xdxl/
 wget -q -O /usr/local/xdxl/badvpn "${REPO}source/badvpn"
 chmod +x /usr/local/xdxl/badvpn
-wget -q -O /etc/systemd/system/udp-mini-1.service "${REPO}source/udp-mini-1.service"
-wget -q -O /etc/systemd/system/udp-mini-2.service "${REPO}source/udp-mini-2.service"
-wget -q -O /etc/systemd/system/udp-mini-3.service "${REPO}source/udp-mini-3.service"
+wget -q -O /etc/systemd/system/udp-mini-1.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-1.service"
+wget -q -O /etc/systemd/system/udp-mini-2.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-2.service"
+wget -q -O /etc/systemd/system/udp-mini-3.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-3.service"
 print_success "Limit Quota Service"
 }
 
@@ -482,7 +482,7 @@ print_success "SlowDNS"
 function ins_SSHD(){
 clear
 print_install "Memasang SSHD"
-wget -q -O /etc/ssh/sshd_config "${REPO}source/sshd"
+wget -q -O /etc/ssh/sshd_config "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/sshd"
 chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 systemctl restart ssh
@@ -528,7 +528,7 @@ print_success "Vnstat"
 function ins_openvpn(){
 clear
 print_install "Menginstall OpenVPN"
-wget -q -O openvpn.sh "${REPO}source/openvpn"
+wget -q -O openvpn.sh "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/openvpn"
 chmod +x openvpn && ./openvpn
 /etc/init.d/openvpn restart
 print_success "OpenVPN"
@@ -594,7 +594,7 @@ fi
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
-wget -q -O /etc/issue.net "${REPO}source/issue.net"
+wget -q -O /etc/issue.net "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/issue.net"
 }
 
 function ins_epro(){

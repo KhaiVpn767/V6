@@ -464,9 +464,9 @@ EOF
 mkdir -p /usr/local/xdxl/
 wget -q -O /usr/local/xdxl/badvpn "${REPO}source/badvpn"
 chmod +x /usr/local/xdxl/badvpn
-wget -q -O /etc/systemd/system/udp-mini-1.service "${REPO}udp-mini-1.service"
-wget -q -O /etc/systemd/system/udp-mini-2.service "${REPO}udp-mini-2.service"
-wget -q -O /etc/systemd/system/udp-mini-3.service "${REPO}udp-mini-3.service"
+wget -q -O /etc/systemd/system/udp-mini-1.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-1.service"
+wget -q -O /etc/systemd/system/udp-mini-2.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-2.service"
+wget -q -O /etc/systemd/system/udp-mini-3.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-3.service"
 print_success "Limit Quota Service"
 }
 
@@ -495,7 +495,7 @@ clear
 print_install "Install Dropbear, Press any button if too long"
 # // Installing Dropbear
 apt-get install dropbear -y > /dev/null 2>&1
-wget -q -O /etc/default/dropbear "https://raw.githubusercontent.com/KhaiVpn767/V6/main/config/dropbear.conf"
+wget -q -O /etc/default/dropbear "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/dropbear"
 chmod +x /etc/default/dropbear
 /etc/init.d/dropbear restart
 /etc/init.d/dropbear status

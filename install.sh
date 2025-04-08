@@ -79,7 +79,7 @@ else
 sts="${Error}"
 fi
 
-REPO="https://raw.githubusercontent.com/nabati123/new/main/"
+REPO="https://raw.githubusercontent.com/KhaiVpn767/V6/main/"
 start=$(date +%s)
 secs_to_human() {
 echo "Installation time : $((${1} / 3600)) hours $(((${1} / 60) % 60)) minute's $((${1} % 60)) seconds"

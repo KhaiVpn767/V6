@@ -399,20 +399,20 @@ function udp_mini(){
 clear
 print_install "Memasang Service Limit Quota"
 cd
-wget -q -O /etc/systemd/system/limitvmess.service "${REPO}source/limitvmess.service"
-wget -q -O /etc/systemd/system/limitvless.service "${REPO}source/limitvless.service"
-wget -q -O /etc/systemd/system/limittrojan.service "${REPO}source/limittrojan.service"
-wget -q -O /etc/systemd/system/limitshadowsocks.service "${REPO}source/limitshadowsocks.service"
-wget -q -O /etc/xray/limit.vmess "${REPO}source/vmess" >/dev/null 2>&1
-wget -q -O /etc/xray/limit.vless "${REPO}source/vless" >/dev/null 2>&1
-wget -q -O /etc/xray/limit.trojan "${REPO}source/trojan" >/dev/null 2>&1
-wget -q -O /etc/xray/limit.shadowsocks "${REPO}source/shadowsocks" >/dev/null 2>&1
+wget -q -O /etc/systemd/system/limitvmess.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/limitvmess.service"
+wget -q -O /etc/systemd/system/limitvless.service "https://raw.githubusercontent.com/KhaiVpn767/V6/refs/heads/main/source/limitvless.service"
+wget -q -O /etc/systemd/system/limittrojan.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/limittrojan.service"
+wget -q -O /etc/systemd/system/limitshadowsocks.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/limitshadowsocks.service"
+wget -q -O /etc/xray/limit.vmess "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/vmess" >/dev/null 2>&1
+wget -q -O /etc/xray/limit.vless "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/vless" >/dev/null 2>&1
+wget -q -O /etc/xray/limit.trojan "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/trojan" >/dev/null 2>&1
+wget -q -O /etc/xray/limit.shadowsocks "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/shadowsocks" >/dev/null 2>&1
 chmod +x /etc/xray/limit.vmess
 chmod +x /etc/xray/limit.vless
 chmod +x /etc/xray/limit.trojan
 chmod +x /etc/xray/limit.shadowsocks
 
-wget -q -O /usr/bin/limit-ip "${REPO}source/limit-ip"
+wget -q -O /usr/bin/limit-ip "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/limit-ip"
 chmod +x /usr/bin/*
 cd /usr/bin
 sed -i 's/\r//' limit-ip
@@ -462,7 +462,7 @@ WantedBy=multi-user.target
 EOF
 
 mkdir -p /usr/local/xdxl/
-wget -q -O /usr/local/xdxl/badvpn "${REPO}source/badvpn"
+wget -q -O /usr/local/xdxl/badvpn "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/source/badvpn"
 chmod +x /usr/local/xdxl/badvpn
 wget -q -O /etc/systemd/system/udp-mini-1.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-1.service"
 wget -q -O /etc/systemd/system/udp-mini-2.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-2.service"
@@ -482,7 +482,7 @@ print_success "SlowDNS"
 function ins_SSHD(){
 clear
 print_install "Memasang SSHD"
-wget -q -O /etc/ssh/sshd_config "${REPO}source/sshd"
+wget -q -O /etc/ssh/sshd_config "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/sshd"
 chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
 systemctl restart ssh

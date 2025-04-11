@@ -462,7 +462,7 @@ WantedBy=multi-user.target
 EOF
 
 mkdir -p /usr/local/xdxl/
-wget -q -O /usr/local/xdxl/badvpn "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/source/badvpn"
+wget -q -O /usr/local/xdxl/badvpn "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/badvpn"
 chmod +x /usr/local/xdxl/badvpn
 wget -q -O /etc/systemd/system/udp-mini-1.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-1.service"
 wget -q -O /etc/systemd/system/udp-mini-2.service "https://raw.githubusercontent.com/KhaiVpn767/V6/main/source/udp-mini-2.service"
